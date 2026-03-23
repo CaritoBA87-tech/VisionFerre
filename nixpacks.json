@@ -1,6 +1,13 @@
 {
   "providers": ["dotnet"],
+  "build": {
+    "cacheDirectories": []
+  },
+  "setup": {
+    "pkgs": ["dotnet-sdk_8"]
+  },
   "variables": {
-    "NIXPACKS_DOTNET_SDK_VERSION": "8"
+    "NIXPACKS_DOTNET_SDK_VERSION": "8",
+    "NIXPACKS_NO_CACHE": "1"
   }
 }
