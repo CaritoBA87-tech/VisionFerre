@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="AulaDiser.Poryecto.Clases/AulaDiser.Poryecto.Clases.csproj" />
+  <Project Path="AulaDiser.Proyecto.API/AulaDiser.Proyecto.API.csproj" Id="0fb75198-5ae9-4fa0-a56d-28808434598b" />
+  <Project Path="AulaDiser.Proyecto.Datos/AulaDiser.Proyecto.Datos.csproj" />
+  <Project Path="AulaDiser.Proyecto.Logica/AulaDiser.Proyecto.Logica.csproj" Id="3c6f7393-cb79-43c8-a525-26125bcf34f3" />
+  <Project Path="AulaDiser.Proyecto.MVC/AulaDiser.Proyecto.MVC.csproj" Id="867aec0e-075e-421b-852f-f3f5262426b6" />
+</Solution>

@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AWSSDK.BedrockRuntime" Version="4.0.16.1" />
+    <PackageReference Include="AWSSDK.Comprehend" Version="4.0.2.13" />
+    <PackageReference Include="AWSSDK.Rekognition" Version="4.0.3.13" />
+    <PackageReference Include="AWSSDK.Translate" Version="4.0.1.14" />
+    <PackageReference Include="Mapster" Version="7.4.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="10.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AulaDiser.Poryecto.Clases\AulaDiser.Poryecto.Clases.csproj" />
+    <ProjectReference Include="..\AulaDiser.Proyecto.Datos\AulaDiser.Proyecto.Datos.csproj" />
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="4.0.3.22" />
+    <PackageReference Include="AWSSDK.S3" Version="4.0.18.7" />
+    <PackageReference Include="Mapster" Version="7.4.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.25" />
+    <PackageReference Include="Scalar.AspNetCore" Version="2.11.10" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AulaDiser.Poryecto.Clases\AulaDiser.Poryecto.Clases.csproj" />
+    <ProjectReference Include="..\AulaDiser.Proyecto.Datos\AulaDiser.Proyecto.Datos.csproj" />
+    <ProjectReference Include="..\AulaDiser.Proyecto.Logica\AulaDiser.Proyecto.Logica.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Program.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+  </ItemGroup>
+
+</Project>

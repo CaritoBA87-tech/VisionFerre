@@ -1,0 +1,6 @@
+@AulaDiser.Proyecto.API_HostAddress = http://localhost:5098
+
+GET {{AulaDiser.Proyecto.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
