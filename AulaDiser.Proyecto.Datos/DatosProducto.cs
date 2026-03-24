@@ -142,9 +142,14 @@ namespace AulaDiser.Proyecto.Datos
             }
             catch (Exception ex)
             {
+                // Esto imprimirá el error REAL en los logs de Railway (ej. "Login failed" o "Network error")
+                Console.WriteLine($"DEBUG ERROR SQL: {ex.Message}");
+
                 MensajeError = ex.Message;
                 HayError = true;
-                lst = null;
+
+                // CAMBIO VITAL: Devuelve una lista vacía en lugar de null
+                lst = new List<Producto>();
             }
             finally
             {

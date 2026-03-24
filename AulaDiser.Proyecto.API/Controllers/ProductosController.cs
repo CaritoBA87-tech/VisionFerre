@@ -51,7 +51,8 @@ namespace AulaDiser.Proyecto.API.Controllers
         public IEnumerable<Producto> Get(string idsCategorias = null)
         {
             DatosProducto obj = new DatosProducto(_connectionString);
-            var products = obj.ObtenerTodos(idsCategorias);
+            //var products = obj.ObtenerTodos(idsCategorias);
+            var products = obj.ObtenerTodos(idsCategorias) ?? new List<Producto>();
 
             // Como SQL devuelve [{"imagen":"ruta/al/s3"}, {...}], usamos una clase anónima o un Dictionary
             var opciones = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
