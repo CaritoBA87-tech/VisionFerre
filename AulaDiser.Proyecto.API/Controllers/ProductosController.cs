@@ -73,9 +73,9 @@ namespace AulaDiser.Proyecto.API.Controllers
                     {
                         string rutaOriginalS3 = item["imagen"]; // Aquí tienes "assets/VisionFerre/..."
 
-                        //string urlFirmada = GenerarUrlFirmadaS3(rutaOriginalS3);
+                        string urlFirmada = GenerarUrlFirmadaS3(rutaOriginalS3);
 
-                        //product.Imagenes.Add(urlFirmada);
+                        product.Imagenes.Add(urlFirmada);
                     }
                 }
             }
