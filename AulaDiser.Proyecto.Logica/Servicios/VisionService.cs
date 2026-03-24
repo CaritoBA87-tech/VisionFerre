@@ -111,20 +111,20 @@ namespace AulaDiser.Proyecto.Logica.Servicios
 
             try
             {
-                var response = await _rekognitionClient.DetectCustomLabelsAsync(request);
+                /*var response = await _rekognitionClient.DetectCustomLabelsAsync(request);
 
                 var etiquetaPrincipal = response.CustomLabels
                     .OrderByDescending(l => l.Confidence)
                     .FirstOrDefault();
 
                 if (etiquetaPrincipal != null)
-                {
+                {*/
                     //var labels = new List<string> { etiquetaPrincipal.Name };
                     var labels = new List<string> { "Tornillo-Metal-Cruz" };
                    return _datosProducto.BuscarProductosPorEtiquetas(labels);
-                }
+                //}
 
-                return new List<Producto>();
+                //return new List<Producto>();
 
             }
 
