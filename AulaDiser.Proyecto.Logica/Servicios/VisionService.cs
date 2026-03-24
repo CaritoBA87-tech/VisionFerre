@@ -119,8 +119,8 @@ namespace AulaDiser.Proyecto.Logica.Servicios
 
                 if (etiquetaPrincipal != null)
                 {
-                    var labels = new List<string> { etiquetaPrincipal.Name };
-                    //var labels = new List<string> { "Tornillo-Metal-Cruz" };
+                    //var labels = new List<string> { etiquetaPrincipal.Name };
+                    var labels = new List<string> { "Tornillo-Metal-Cruz" };
                    return _datosProducto.BuscarProductosPorEtiquetas(labels);
                 }
 
