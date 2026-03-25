@@ -163,7 +163,7 @@ builder.Services.AddCors(options =>
     {
         policy.WithOrigins(
                 "http://localhost:4200",
-                "http://vision-ferre-web.s3-website-us-east-1.amazonaws.com"
+                "https://vision-ferre-front-end.vercel.app"
               )
               .AllowAnyMethod()
               .AllowAnyHeader()
