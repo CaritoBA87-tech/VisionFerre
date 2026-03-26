@@ -60,23 +60,23 @@ namespace AulaDiser.Proyecto.API.Controllers
             //var products = obj.ObtenerTodos(idsCategorias);
             var products = obj.ObtenerTodos(idsCategorias) ?? new List<Producto>();
 
-            // Como SQL devuelve [{"imagen":"ruta/al/s3"}, {...}], usamos una clase anónima o un Dictionary
             var opciones = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
 
             foreach (var product in products)
             {
-                var listaTemporal = JsonSerializer.Deserialize<List<Dictionary<string, string>>>(product.jsonImagenes, opciones);
-
-                if (listaTemporal != null)
+                
+                if (!string.IsNullOrEmpty(product.jsonImagenes))
                 {
-                    foreach (var item in listaTemporal)
-                    {
-                        string rutaOriginalS3 = item["imagen"]; // Aquí tienes "assets/VisionFerre/..."
+                    // Ruta de imagen en AWS S3
+                    /*string rutaOriginalS3 = product.jsonImagenes;
 
-                        string urlFirmada = GenerarUrlFirmadaS3(rutaOriginalS3);
+                    string urlFirmada = GenerarUrlFirmadaS3(rutaOriginalS3);
 
-                        product.Imagenes.Add(urlFirmada);
-                    }
+                    product.Imagenes.Add(urlFirmada);*/
+
+
+                    // Ruta de imagen en carpeta estática
+                    product.Imagenes.Add(product.jsonImagenes);
                 }
             }
 
@@ -109,21 +109,40 @@ namespace AulaDiser.Proyecto.API.Controllers
             DatosProducto obj = new DatosProducto(_connectionString);
             var product = obj.ObtenerPorID(id);
 
-             //Como SQL devuelve [{"imagen":"ruta/al/s3"}, {...}], usamos una clase anónima o un Dictionary
+            if (product == null) return null;
+
             var opciones = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
 
-               var listaTemporal = JsonSerializer.Deserialize<List<Dictionary<string, string>>>(product.jsonImagenes, opciones);
+            try
+            {
+                var listaDeImagenes = JsonSerializer.Deserialize<List<Dictionary<string, string>>>(product.jsonImagenes, opciones);
 
-                if (listaTemporal != null)
+                if (listaDeImagenes != null)
                 {
-                    foreach (var item in listaTemporal)
+                    foreach (var item in listaDeImagenes)
                     {
-                        string rutaOriginalS3 = item["imagen"]; // Aquí tienes "assets/VisionFerre/..."
+                        // Ruta de imagen en AWS S3
+                        /*if (item.ContainsKey("imagen") && !string.IsNullOrEmpty(item["imagen"]))
+                        {
+                            string rutaS3 = item["imagen"];
 
-                        string urlFirmada = GenerarUrlFirmadaS3(rutaOriginalS3);
+                            string urlFirmada = GenerarUrlFirmadaS3(rutaS3);
 
-                        product.Imagenes.Add(urlFirmada);
+                            product.Imagenes.Add(urlFirmada);
+                        }*/
+
+                        // Ruta de imagen en carpeta estática
+                        if (item.ContainsKey("imagenLocal") && !string.IsNullOrEmpty(item["imagenLocal"]))
+                        {
+                            product.Imagenes.Add(item["imagenLocal"]);
+                        }
                     }
+                }
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error procesando imágenes de VisionFerre: {ex.Message}");
             }
 
             return product;
@@ -265,6 +284,7 @@ namespace AulaDiser.Proyecto.API.Controllers
         {
             try
             {
+
                 // 2. Definir la solicitud de la URL firmada
                 GetPreSignedUrlRequest request = new GetPreSignedUrlRequest
                 {

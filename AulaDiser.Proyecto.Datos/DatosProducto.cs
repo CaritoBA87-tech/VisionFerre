@@ -7,6 +7,7 @@ using System.Data;
 using System.Net.NetworkInformation;
 using System.Text;
 using System.Text.Json;
+using Newtonsoft.Json.Linq;
 
 namespace AulaDiser.Proyecto.Datos
 {
@@ -131,7 +132,20 @@ namespace AulaDiser.Proyecto.Datos
                     producto.Precio = Convert.ToDecimal(dr["precio"]);
                     producto.Categoria = dr["categoria"].ToString();
                     producto.Marca = dr["marca"].ToString();
-                    producto.jsonImagenes = dr["imagenesJSON"] != DBNull.Value ? dr["imagenesJSON"].ToString() : "[]";
+                    //producto.jsonImagenes = dr["imagenesJSON"] != DBNull.Value ? dr["imagenesJSON"].ToString() : "[]";
+
+                    string jsonRaw = dr["imagenesJSON"] != DBNull.Value ? dr["imagenesJSON"].ToString() : "[]";
+
+                    var jsonArray = JArray.Parse(jsonRaw);
+
+                    if (jsonArray.HasValues)
+                    {
+                        // Ruta de imagen en AWS S3
+                        //producto.jsonImagenes = jsonArray[0]["imagen"]?.ToString();
+
+                        // Ruta de imagen en carpeta estática
+                        producto.jsonImagenes = jsonArray[0]["imagenLocal"]?.ToString();
+                    }
 
                     lst.Add(producto);
                 }
@@ -339,7 +353,12 @@ namespace AulaDiser.Proyecto.Datos
                     producto.Precio = Convert.ToDecimal(dr["precio"]);
                     producto.Categoria = dr["categoria"].ToString();
                     producto.Marca = dr["marca"].ToString();
-                    producto.jsonImagenes = dr["imagenesJSON"] != DBNull.Value ? dr["imagenesJSON"].ToString() : "[]";
+                    //producto.jsonImagenes = dr["imagenesJSON"] != DBNull.Value ? dr["imagenesJSON"].ToString() : "[]";
+
+                    string jsonRaw = dr["imagenesJSON"] != DBNull.Value ? dr["imagenesJSON"].ToString() : "[]";
+
+                    producto.jsonImagenes = jsonRaw;
+
                 }
 
                 HayError = false;
