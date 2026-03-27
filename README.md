@@ -58,6 +58,8 @@ Este repositorio es el backend del proyecto
 
 **Carolina Bolayna Alvarez** 
 
+carolinabolayna13@gmail.com
+
 *Desarrollador fullstack | AWS Certified Cloud Practitioner*
 
 <br>
@@ -180,5 +182,7 @@ Este repositorio es el backend del proyecto
 
 
 **Carolina Bolayna Alvarez** 
+
+carolinabolayna13@gmail.com
 
 *Desarrollador fullstack | AWS Certified Cloud Practitioner*
